@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useAppContext } from "@/context/AppContext";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Loading from "@/components/Loading";
+import Loading from "@/components/loading";
 
 const MyOrders = () => {
 

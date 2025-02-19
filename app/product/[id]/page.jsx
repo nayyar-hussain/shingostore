@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import Loading from "@/components/Loading";
+import Loading from "@/components/loading";
 import { useAppContext } from "@/context/AppContext";
 import React from "react";
 
