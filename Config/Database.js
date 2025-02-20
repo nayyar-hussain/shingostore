@@ -16,7 +16,7 @@ export const connectDb = async () => {
             bufferCommands: false,
         };
 
-        cached.promise = mongoose.connect(process.env.MONGODB_URI + '/shigostore', opts).then((mongoose) => {
+        cached.promise = mongoose.connect(process.env.MONGODB_URI+'/shigostore', opts).then((mongoose) => {
             return mongoose;
         });
     }
