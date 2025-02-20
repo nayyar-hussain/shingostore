@@ -1,6 +1,6 @@
 import userModel from "@/Model/User";
 import { Inngest } from "inngest";
-import { ConnectDb } from "./Database";
+import { connectDb } from "./Database";
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "quickcart-next" });
@@ -43,7 +43,7 @@ export const syncUserUpdation = inngest.createFunction(
       imageUrl: image_url,
     };
 
-    await ConnectDb();
+    await connectDb();
     await userModel.findByIdAndUpdate(id, userData);
   }
 );
