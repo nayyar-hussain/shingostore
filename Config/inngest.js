@@ -14,7 +14,7 @@ export const syncUserData = inngest.createFunction(
     const { id, first_name, last_name, email_addresses, image_url } = event.data;
     const userData = {
       _id: id,
-      name: first_name + " " + last_name,
+      name: `${first_name} ${last_name}`,
       email: email_addresses[0].email.address,
       imageUrl: image_url,
     };
@@ -24,16 +24,16 @@ export const syncUserData = inngest.createFunction(
   }
 );
 
-// for inngest updatation
+// for inngest update
 
 export const updateUserData = inngest.createFunction(
   { id: "update-user-from-clerk" },
-  { event: "clerk/user.updated" }, // Correct event type for update
+  { event: "clerk/user.updated" },
   async ({ event }) => {
     const { id, first_name, last_name, email_addresses, image_url } = event.data;
     const userData = {
       _id: id,
-      name: first_name + " " + last_name,
+      name: `${first_name} ${last_name}`,
       email: email_addresses[0].email.address,
       imageUrl: image_url,
     };
@@ -45,7 +45,7 @@ export const updateUserData = inngest.createFunction(
 
 export const deleteUserData = inngest.createFunction(
   { id: "delete-user-from-clerk" },
-  { event: "clerk/user.deleted" }, // Correct event type for delete
+  { event: "clerk/user.deleted" },
   async ({ event }) => {
     const { id } = event.data;
     await ConnectDb();
