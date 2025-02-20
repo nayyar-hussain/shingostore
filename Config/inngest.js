@@ -18,7 +18,7 @@ export const syncUserData = inngest.createFunction(
       const userData = {
         _id: id,
         name: `${first_name} ${last_name}`,
-        email: email_addresses[0].email.address,
+        email: email_addresses[0].email_address,
         imageUrl: image_url,
       };
 
@@ -45,7 +45,7 @@ export const updateUserData = inngest.createFunction(
     const userData = {
       _id: id,
       name: `${first_name} ${last_name}`,
-      email: email_addresses[0].email.address,
+      email: email_addresses[0].email_address,
       imageUrl: image_url,
     };
 
