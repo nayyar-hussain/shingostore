@@ -5,15 +5,14 @@ import { ConnectDb } from "./Database";
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "quickcart-next" });
 
-export const syncUserData = inngest.createFunction(
+export const syncUserCreation = inngest.createFunction(
   {
     id: "sync-user-from-clerk",
   },
   { event: "clerk/user.created" },
   async ({ event }) => {
-    try {
+   
       const { id, first_name, last_name, email_addresses, image_url } = event.data;
-      console.log('Received event data:', event.data); // Add logging
 
       const userData = {
         _id: id,
@@ -22,22 +21,17 @@ export const syncUserData = inngest.createFunction(
         imageUrl: image_url,
       };
 
-      console.log(userData);
       
 
       await connectDb();
-      console.log('Database connected successfully'); // Add logging
 
       await userModel.create(userData);
-      console.log(`User ${id} created successfully.`);
-    } catch (error) {
-      console.error(`Error creating user: ${error}`);
-    }
+   
   }
 );
 // for inngest update
 
-export const updateUserData = inngest.createFunction(
+export const syncUserUpdation = inngest.createFunction(
   { id: "update-user-from-clerk" },
   { event: "clerk/user.updated" },
   async ({ event }) => {
@@ -54,7 +48,7 @@ export const updateUserData = inngest.createFunction(
   }
 );
 
-export const deleteUserData = inngest.createFunction(
+export const syncUserDeletion = inngest.createFunction(
   { id: "delete-user-from-clerk" },
   { event: "clerk/user.deleted" },
   async ({ event }) => {
